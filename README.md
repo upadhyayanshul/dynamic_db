@@ -88,7 +88,7 @@ DEFAULT Admin Command
 	- Try To login with username and password in the dyanmic_db projrct application will render the dashboard (on success)
 
 
-2.Defien urls of site
+2.Define urls of site
 
 	-1.Main project directory [mysite] contains the url for app and admin
 
