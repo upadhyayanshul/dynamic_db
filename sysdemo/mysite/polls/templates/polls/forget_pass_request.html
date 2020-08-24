@@ -1,0 +1,58 @@
+ <!DOCTYPE html>
+ <!-- Load Static For TEmplate Css -->
+{% load static %}
+
+<html>
+<!--Forget Email Template Header -->
+
+<head>
+    <title> Active Account</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="{% static 'polls/css/template_style.css' %}">
+</head>
+
+<!-- Put The Datails Of Template -->
+
+<body bgcolor="#e1e5e8" style="margin-top:0 ;margin-bottom:0 ;margin-right:0 ;margin-left:0 ;padding-top:0px;padding-bottom:0px;padding-right:0px;padding-left:0px;background-color:#e1e5e8;">
+
+  <!-- Integrate The Django Code With HTML For Template -->
+  <center style="width:100%;table-layout:fixed;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;background-color:#e1e5e8;">
+
+    <!-- Define The Template Design -->
+    <div style="max-width:600px;margin-top:0;margin-bottom:0;margin-right:auto;margin-left:auto;">
+
+      <!-- Table Body With Details -->
+      <table align="center" cellpadding="0" style="border-spacing:0;font-family:'Muli',Arial,sans-serif;color:#333333;Margin:0 auto;width:100%;max-width:600px;">
+        <tbody>
+          <tr>
+            <td class="one-column" style="padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;background-color:#ffffff;">
+
+              <table style="border-spacing:0;" width="100%">
+                <tbody>
+                  <!-- Add Lin k To Reset Password Template-->
+                  <tr>
+                    <td class="inner contents center" style="padding-top:15px;padding-bottom:15px;padding-right:30px;padding-left:30px;text-align:left;">
+                      <center>
+                        <p class="h1 center" style="Margin:0;text-align:center;font-family:'flama-condensed','Arial Narrow',Arial;font-weight:100;font-size:30px;Margin-bottom:26px;">Forgot your password?</p>
+                        <!--[if (gte mso 9)|(IE)]><![endif]-->
+                        <p class="description center" style="font-family:'Muli','Arial Narrow',Arial;Margin:0;text-align:center;max-width:320px;color:#a1a8ad;line-height:24px;font-size:15px;Margin-bottom:10px;margin-left: auto; margin-right: auto;"><span style="color: rgb(161, 168, 173); font-family: Muli, &quot;Arial Narrow&quot;, Arial; font-size: 15px; text-align: center; background-color: rgb(255, 255, 255);">We got the password(reset)/usernamer(forget) request by you,That's  okay, it happens! Click on the button below to reset your password.</span></p>
+                        <p>In case you want username then your account username is <b>{{user.username}}</b></p>
+                        <!--[if (gte mso 9)|(IE)]><br>&nbsp;<![endif]-->
+                        <span class="sg-image" data-imagelibrary="%7B%22width%22%3A%22260%22%2C%22height%22%3A54%2C%22alt_text%22%3A%22Reset%20your%20Password%22%2C%22alignment%22%3A%22%22%2C%22border%22%3A0%2C%22src%22%3A%22https%3A//marketing-image-production.s3.amazonaws.com/uploads/c1e9ad698cfb27be42ce2421c7d56cb405ef63eaa78c1db77cd79e02742dd1f35a277fc3e0dcad676976e72f02942b7c1709d933a77eacb048c92be49b0ec6f3.png%22%2C%22link%22%3A%22%23%22%2C%22classes%22%3A%7B%22sg-image%22%3A1%7D%7D"><a href="http://{{ domain }}{% url 'polls:reset_password' uidb64=uid token=token %}" target="_blank" ><img alt="Reset your Password" height="54" src="https://marketing-image-production.s3.amazonaws.com/uploads/c1e9ad698cfb27be42ce2421c7d56cb405ef63eaa78c1db77cd79e02742dd1f35a277fc3e0dcad676976e72f02942b7c1709d933a77eacb048c92be49b0ec6f3.png" style="border-width: 0px; margin-top: 30px; margin-bottom: 50px; width: 260px; height: 54px;" width="260"></a></span>
+                        <!--[if (gte mso 9)|(IE)]><br>&nbsp;<![endif]--></center>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+  
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </center>
+</body>
+
+</html>

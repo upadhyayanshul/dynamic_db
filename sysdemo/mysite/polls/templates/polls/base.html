@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--  Load Static Files In Base Template -->
+{% load static %}
+
+<html lang="en">
+
+<head>
+  <title>Django Task</title>
+
+  <!-- Define Header Meta Data -->
+  <meta charset="UTF-8">
+  <meta name="description" content="Django Task App">
+  <meta name="keywords" content="Django, Dynamic, Database">
+  <meta name="author" content="Anshul Upadhyay">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+  
+  <!-- Reference Online File For Testing TAsk As Prefer To Put In Static Folder  -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+
+  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+ 
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+ 
+<!-- BOOTSTRAP TOGGLING JQUERY FOR DROPDOWN -->
+ <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+ <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+
+ <!-- Include The Font Awsesome For Icons -->
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <link rel="stylesheet" href="{% static 'polls/css/style.css' %}">
+
+   <!-- Include Custom Scripts & Css -->
+  <script src="{% static 'polls/js/access_app.js' %}"></script>
+  
+</head>
+
+<!-- Web Page Body -->
+<body style="background-color: #222020;"> 
+
+<!-- Define The Content Block To Occupied -->
+{% block content %} 
+<!-- Code From Integration  -->
+{% endblock %} 
+
+</body>
+
+</html>

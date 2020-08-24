@@ -1,0 +1,81 @@
+<!-- Extent The Base Template -->
+{% extends './base.html' %}
+
+<!-- Load The static Files -->
+{% load static %}
+
+<!-- Replace The Base Table Content  -->
+{% block content %}
+<!-- Site Logo -->
+<img id="logo-img" src="{% static 'polls/images/logo.png' %}" alt="Systango image">
+
+<!-- MAin Login Container -->
+<div class="container">
+	<div class="row">
+		<!-- Main Login Panel -->
+		<div id="main" class="col-md-4 col-md-offset-4">
+			<div class="panel panel-default">
+				<!-- Panel Heading -->
+				<div class="panel-heading"> 
+					{% include './messages.html' %} 
+					{% if not login_type%}
+						<h3 id="p_title" class="panel-title">Login</h3> 
+					{% else %}
+					  	<h3 id="p_title" class="panel-title">Login As {{login_type}}</h3> 
+					{% endif %} 
+				</div>
+				<!-- panel Body -->
+				<div class="panel-body">
+					<!-- Render Form -->
+					<form id="django_form" accept-charset="UTF-8" role="form" action="{% url 'polls:login' %}" method="post"> 
+						{% csrf_token %}
+						<fieldset> {% for field in log_form %}
+							<div class="form-group">
+								{{ field }} 
+								{% if field.help_text %} 
+								<span style="color:red" class="help">{{ field.help_text|safe }}</span> 
+								{% endif %} 
+							</div> {% endfor %}
+							<div class="form-group">
+								<a href="#forgetPass" class="trigger-btn" data-toggle="modal">forget password Or username</a> 
+							</div>
+							<input class="btn btn-lg btn-primary btn-block" type="submit" value="Login">
+							<div style="margin-top: 7px;">
+								<a href="{% url 'polls:home' %}">
+									<button class="btn btn-lg btn-primary btn-block" type="button" name="button" value="Dashboard">Home</button>
+								</a>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Forget Password Modal  -->
+<div id="forgetPass" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="forgetPass" aria-hidden="true">
+	<div class="modal-dialog modal-confirm">
+		<!-- Modal Header -->
+		<div class="modal-header">
+			<h5 class="modal-title text-center" id="forgetPass">Forget Password</h5>
+			<a herf="/polls/login/" id="loader_model">
+				<button type="button" class="close model_loder" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+			</a>
+		</div>
+		<!-- Modal Content -->
+		<div class="modal-content">
+			<!-- Modal Body -->
+			<div class="modal-body">
+				<form id="forget_form" action="{% url 'polls:forget_pass' %}" method="post"> {% csrf_token %}
+					<input id="id_email" maxlength="150" name="email" type="email" required="" placeholder="Email" class="form-control"> <span style="color: red"> please enter registered email </span> </form>
+			</div>
+			<!-- Modal Footer -->
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger model_loder" data-dismiss="modal">Close</button>
+				<button form="forget_form" type="submit" class="btn btn-primary">Save</button>
+			</div>
+		</div>
+	</div>
+<!-- End -->
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends './base.html' %}
+{% block content %}
+{% load static %}
+{% load stripaccents %}
+
+{% include './messages.html' %}
+<div id="product_model_id" >
+<div class="modal-header">
+  <h5 class="modal-title text-center" id="productModelLabel">Add Product</h5>
+  <a herf="/polls/home/" id="loader_model"><button type="button" class="close model_loder product_close" data-dismiss="modal" aria-label="Close">
+    <span class="product_close" aria-hidden="true">&times;</span>
+  </button></a>
+</div>
+<div class="modal-body">
+  <form id="django_form"  role="form" action="{% url 'polls:product' %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+      <div id='data_description'>
+      <p>Please select one of the database from the list below</p>
+      <p>This selection allows you to place data in selected database</p>
+    </div>
+     <div class="form-group">
+      {% for field in database_list  %}
+       <label style="color: blue; text-align: center;width: 100%;font-weight: bold;font-size: 23px;" class="control-label" for="id_database_access">Databases</label></br>.
+
+       {{field}}
+
+       {% endfor %}
+     </div>
+      <div id="demo" class="row" style="display: none">
+        {% for field in product_form  %}
+
+        {% if field.name in 'active' %}
+        <div class="col-sm-6">
+          <span style="color:black" >{{field.label}}</span>&nbsp&nbsp&nbsp
+          {{field}}<br>
+         <span  style="color:red" class="help">{{ field.help_text|safe }}</span>
+          </div>
+        {% else %}
+                  <div class="col-sm-6">
+            {{ field }}
+            {% template_error field.errors as add_users_flag %}
+            {% if add_users_flag %}
+                {% for error in add_users_flag  %}
+                  <b><span  style="color:red" class="help">{{ error |safe }}</span></b>
+                {% endfor %}
+            {% else %}
+              <span  style="color:red" class="help">{{ field.help_text|safe }}</span>
+            {% endif %}
+
+          </div>
+       {% endif %}
+
+
+        {% endfor %}
+      </div>
+    </fieldset>
+  </form>
+</div>
+<div class="modal-footer">
+  <button  type="button" class="btn btn-danger model_loder product_close" data-dismiss="modal">Close</button>
+  <button form="django_form" type="submit" class="btn btn-primary">Save</button>
+</div>
+</div>
+
+<div class="modal hide " id="product_create_modal" tabindex="-1" role="dialog" aria-labelledby="productModelLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document" >
+    <div id="signup-content" class="modal-content">
+      </div>
+    </div>
+  </div>
+
+
+  <script src="{% static 'polls/js/product.js' %}"></script>
+
+{% endblock %}

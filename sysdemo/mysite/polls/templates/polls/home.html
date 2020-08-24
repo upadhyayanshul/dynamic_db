@@ -1,0 +1,49 @@
+
+<!-- Extend Base Template -->
+{% extends './base.html' %}
+
+<!-- Load Static For Image -->
+{% load static %}
+
+{% block content %}
+<!-- Web Page LOgo -->
+<img id="logo-img" src="{% static 'polls/images/logo.png' %}" alt="Systango image">
+
+<!-- Home Page Content -->
+<div class="container">
+	
+	<!-- Define All In A Row -->
+	<div class="row" id="para_des">
+		
+		<div class="col-md-12">
+			
+			<!-- Main Page Heading -->
+			<h1 style="margin-left: 100px;">Sys<span style="color:blue;">tango</span>Task Assignment</h1>
+			<hr style="border: 2px solid #257edd;">
+			
+			<!-- Home Page body Content -->
+			<ul>
+				<li style="border: 0" class="para_content">Systango task consists the use of multiple databases <b>(pgsql and mysql)</b> with the same model.</li>
+				<br>
+				<li style="border: 0" class="para_content">Admin Can register a user with the database permission in the application</li>
+				<br>
+				<li style="border: 0" class="para_content">User gets the email on registation by the admin with login details</li>
+				<br>
+				<li style="border: 0" class="para_content">User can Select a database and perform the curd on tables of specific database</li>
+			</ul>
+			
+			<!-- Buttons For Admin OR User Login -->
+			<div class="col-md-12" style="margin-left:165px;margin-top: 40px;">
+				<a href="{% url 'polls:login' %}?from=Admin">
+					<button id="admin_login" class="btn btn-primary" type="button" name="button">Admin Login</button>
+				</a>&nbsp;&nbsp;
+				<a href="{% url 'polls:login' %}?from=User">
+					<button id="user_login" class="btn btn-primary" type="button" name="button">User Login</button>
+				</a>&nbsp;&nbsp; 
+			</div>
+		</div>
+
+	</div>
+</div>
+
+{% endblock %}

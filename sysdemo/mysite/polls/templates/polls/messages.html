@@ -1,0 +1,10 @@
+<!-- Define The Global Message In Template From Django App -->
+{% if messages %}
+    {% for message in messages %}
+        <!-- Show Message On Tag Set From Django API -->
+        <div class="text-center alert {{ message.tags }} m-1" id="msg" role="alert">
+            {{ message }}
+        </div>
+        <!-- End -->
+    {% endfor %}
+{% endif %}

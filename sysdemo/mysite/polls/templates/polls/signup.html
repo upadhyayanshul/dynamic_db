@@ -1,0 +1,96 @@
+{% extends './base.html' %}
+{% block content %}
+{% load stripaccents %}
+
+
+<div id="form_model_id" >
+<div class="modal-header">
+  <h5 class="modal-title text-center" id="signupModelLabel">Register New User </h5>
+  <a herf="/polls/home/" id="loader_model"><button type="button" class="close model_loder" data-dismiss="modal" aria-label="Close">
+    <span class="signup_close" aria-hidden="true">&times;</span>
+  </button></a>
+</div>
+<div class="modal-body">
+  <form id="django_form"  role="form" action="{% url 'polls:signup' %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+      <div class="row">
+        {% for field in u_form  %}
+
+          <div class="col-sm-6">
+
+            {{ field }}
+
+            {% template_error field.errors as add_users_flag %}
+            {% if add_users_flag %}
+                {% for error in add_users_flag  %}
+                  <span  style="color:red" class="help">{{ error |safe }}</span>
+                {% endfor %}
+            {% else %}
+              <span  style="color:red" class="help">{{ field.help_text|safe }}</span>
+            {% endif %}
+
+          </div>
+        {% endfor %}
+
+        {% for field in p_form  %}
+          {% if field.name in 'database_access' %}
+            <div class="col-sm-12">
+              <span style="color:blue">{{field.label}}</span><br>
+              {{field}}
+                      {% template_error field.errors as add_users_flag %}
+            {% if add_users_flag %}
+                {% for error in add_users_flag  %}
+                  <span  style="color:red" class="help">{{ error |safe }}</span>
+                {% endfor %}
+            {% else %}
+              <span  style="color:red" class="help">{{ field.help_text|safe }}</span>
+            {% endif %}
+
+            </div>
+          {% else %}
+            <div class="col-sm-6">
+            {{field}}
+{% template_error field.errors as add_users_flag %}
+            {% if add_users_flag %}
+                {% for error in add_users_flag  %}
+                  <span  style="color:red" class="help">{{ error |safe }}</span>
+                {% endfor %}
+            {% else %}
+              <span  style="color:red" class="help">{{ field.help_text|safe }}</span>
+            {% endif %}
+
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </fieldset>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-danger model_loder signup_close" data-dismiss="modal">Close</button>
+  <button form="django_form" type="submit" class="btn btn-primary">Save</button>
+</div>
+</div>
+
+
+<div class="modal hide" id="signupload" tabindex="-1" role="dialog" aria-labelledby="signupModelLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document" >
+    <div id="signup-content" class="modal-content">
+      </div>
+    </div>
+  </div>
+
+<script>
+  $(function() {
+
+     $(".signup_close").click(function(ev) { // for each edit contact url
+               location.href = "/polls/dashboard/"
+             return false; // prevent the click propagation
+         });
+
+  })
+</script>
+{% endblock %}
+
+

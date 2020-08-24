@@ -1,0 +1,89 @@
+<!-- Extend Base Template -->
+{% extends './base.html' %}
+
+<!-- Add Custom Filter In Application -->
+{% load stripaccents %}
+
+<!-- Insert Content In the Base Template Block -->
+{% block content %}
+
+<!-- Include Common Header Herer -->
+{% include '../common/header.html'%}
+
+<!-- Define All In A Row -->
+<div class="row">
+	<div class="col-sm-12">
+		<!-- Main Heading For Table -->
+      	<p id="db_header"><b style="color: #945dcc;">PEMISSION TABLE</b></p>
+      	<div class="container" style="margin-left:0px">
+      		<!-- Include The Message On Access Change -->
+	      	<p>{% include './messages.html' %}</p>
+	      	<!-- Use Tha Table With Content Required -->
+	      	<table  class="table table-condensed table-hover .permit_table">
+	      		<!-- Define TAble Header -->
+	      	  	<thead>
+	      	  		<tr> 
+	      	  			{% for item in permission_table %} 
+	      	  				{% if forloop.first %} 
+	      	  					{% for header in item.user %} 
+	      	  						{% if header in 'email,username,date_joined,is_active' %}
+	      	  							<th>{{ header }}</th> 
+	      	  						{% endif %}
+	      	  					{% endfor %}
+			      	  			<th>database 1</th>
+			      	  			<th>database 2</th>
+			      	  			<th>database 3</th>
+			      	  			<th>database 4</th>
+			      	  			<th>database 5</th>
+	      	  					<th>Change Access</th> 
+	      	  				{% endif%} 
+	      	  			{% endfor %} 
+	      	  		</tr>
+	      	  	</thead>
+	      	  	<!-- Define Table Body  -->
+	      	  	<tbody> 
+	      	  		{% for item in permission_table %}
+		      	  		<tr> 
+		      	  			{% for key,value in item.user.items %} 
+		      	  				{% if key in 'email,is_active,username,date_joined' %}
+		      	  					<td>{{ value}}</td> 
+		      	  				{% endif %} 
+		      	  			{% endfor %} 
+		      	  			<!-- Database Access Checkboxes -->
+		      	  			{% for database in databases|to_utf8:item.database_access %}
+			      	  			<td>
+			      	  				{% csrf_token %}
+			      	  				<input name="selector[]" id={{item.id}} class="ads_Checkbox" type="checkbox" 
+			      	  				value={{database}} {% if database != "no_access" %}checked{% endif %}>
+			      	  			</td> 
+		      	  			{% endfor %}
+		      	  			<td> <a href="#" title="save" class="save_value"><i id="table_icon" class="fas fa-save" aria-hidden="true"></i><a></td>
+		      	  		</tr>
+	      	  		{% endfor %}
+	      	  	</tbody>
+	      	  	<!-- End Table -->
+	      	</table>
+
+    	</div>
+    </div>
+</div>
+ 
+
+     <!-- Modal HTML -->
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="signupModelLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-confirm">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p class="text-center"><b style="color:black">Are You Sure To Logout</b></p>
+      </div>
+      <div class="modal-footer">
+        <a href="{% url 'polls:logout_user' %}" class="btn btn-block" style="background-color:#945dcc"><span>Logout sure</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <!-- Include Common Footer Here -->
+{% include '../common/footer.html'%}
+
+{% endblock %}

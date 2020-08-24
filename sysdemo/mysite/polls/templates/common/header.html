@@ -1,0 +1,68 @@
+<!-- Load the static files  -->
+{% load static %}
+
+<!-- Common Navigation For Each Webpage -->
+<nav class="navbar navbar-inverse">
+  <div style="background-color: #945dcc;" class="container-fluid">
+    <!-- Systango Logo Image -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="{% url 'polls:dashboard' %}">
+        <img src="{% static 'polls/images/logo.png' %}" alt="Systango image">
+      </a>
+    </div>
+    <!-- Systango Logo Image -->
+
+      <!-- Navbar OPtion Listing -->
+      <div id="nav_option"  class="row">
+        <ul class="nav_id" class="nav navbar-nav">
+          <li class="active" class="dashboard">
+            <a href="{% url 'polls:dashboard' %}">Home</a>
+          </li>
+          <li>
+            <a href="#" id="profile_alert">Profile</a>
+          </li>
+          {% if user.is_authenticated %}
+              {% if user.is_superuser %}
+                 <li>
+                   <a href="{% url 'polls:signup' %}" class='li-modal' data-toggle="modal">Add User</a>
+                 </li>
+                 <li>
+                   <a href="{% url 'polls:permission_table' %}" >Permission</a>
+                 </li>    
+              {% else %}
+                 <li>
+                   <a href="{% url 'polls:product' %}" >Product</a>
+                 </li>   
+              {% endif %}    
+            {% endif %}
+          
+        </ul>
+      </div>
+      <!-- Navbar OPtion Listing -->
+
+      <!-- Logout Button From Web -->
+      <ul class="nav_id" class="nav navbar-nav navbar-right">
+        <li>
+            <h3 style="margin-right: 31px;color: #ff8f00;border: 0;"> username-{{ user.get_username }}</h3>
+        </li>
+        <li>
+          <a href="#myModal" class="trigger-btn" data-toggle="modal">
+            <span class="glyphicon glyphicon-log-in"></span> Logout
+          </a>
+        </li>
+      </ul>
+      <!-- Logout Button From Web -->
+      
+  </div>
+
+</nav>
+<!-- DEFINE MAIN HEADING -->
+<div>
+{% if user.is_authenticated %}
+ {% if user.is_superuser %}
+    <h3 style="color: white;text-align: center;">Login As Admin [{{ user.get_username }}]</h3>
+    {% else %}
+    <h3 style="color: white;text-align: center;">Login As User [{{ user.get_username }}]</h3>
+  {% endif %}    
+{% endif %}
+</div>

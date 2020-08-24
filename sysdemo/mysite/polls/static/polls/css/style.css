@@ -1,0 +1,231 @@
+/* Set Body Color*/
+body{
+  padding-top: 20px;
+}
+
+/* All Text In Web To White*/
+* {
+  color: white;
+}
+
+/* Set Moedl Properties*/
+.modal-header {
+  background-color: darkblue;
+}
+/* Model Title In signUp Page*/
+.modal-title {
+  text-align: center;
+}
+
+/*Update The Dashboard Navigation Bar*/
+#nav_option {
+  position: absolute;
+  left: 20%;
+}
+
+/* Dashboard Footer*/
+.footer {
+  position: fixed;
+  height: 50px;
+  background-color: #945dcc;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin-bottom: 0px;
+}
+
+/* Dashboard  Header Options */
+ ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li  {
+  float: left;
+  border-right: 1px solid #bbb;
+}
+
+li  a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 0px 16px;
+  text-decoration: none;
+  font-size: 25px;
+}
+
+/*  Set Fa -Icon In Dashboard*/
+.fas_head {
+  text-align: center;
+  margin: auto;
+}
+
+.fas {
+  font-size: 48px;
+  color: white;
+  margin: -1% 41%;
+}
+
+/* Apply To Jumbrotron Bootstrap*/
+#jumb {
+  margin-top: 20px;
+}
+
+#main {
+  position: absolute;
+  top: 25%;
+  left: 30%;
+}
+
+#logo-img{
+  style=margin-left:10px;
+}
+
+/*Home Page Description*/
+#para_des {
+ width: 70%;
+margin: auto;
+margin-top: 120px;
+}
+
+.para_content{
+
+margin-bottom: -18px;
+}
+
+/* Access Table Designing */
+#table_icon {
+  display: inline;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  color: #fbbb43;
+}
+
+/*Web logo Margin*/
+img {
+  margin-left: 20px;
+}
+
+ Set Message Text In DB Tables
+#table_msg {
+  position: relative;
+  text-align: center;
+  margin-top: 42px;
+}
+
+.table-hover tbody tr:hover td {
+  background-color: #945dcc;
+}
+
+/* DB Table SideBars*/
+.sidenav {
+  width: 80%;
+  position: relative;
+  z-index: 1;
+  top: 0px;
+  left: 16px;
+  background: #945dcc;
+  overflow-x: hidden;
+  padding: 8px 30px;
+  color: white;
+}
+
+.sidenav a {
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: block;
+}
+
+/* sidenav Hovring*/
+.sidenav a:hover {
+  color: #064579;
+}
+
+.main {
+  margin-left: 140px;
+ /* Same width as the sidebar + left position in px */
+  font-size: 28px;
+ /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+/* sidenav Responsive media query*/
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+
+/* DB Tables Css Properties*/
+#db_tables {
+  background-color: white;
+  position: relative;
+  width: 125%;
+  margin-left: -16px;
+  top: 20;
+  text-align: center;
+}
+
+#db_header {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 23px;
+}
+
+#db_grid:hover {
+  color: red;
+}
+
+/* Set Table header to specific width */
+th, td {
+  width: 30px;
+}
+
+.loglist{
+  border: 0;
+}
+
+.table td, .table th {
+padding: 0.40rem;
+padding-top: 0.4rem;
+padding-right: 0.4rem;
+padding-bottom: 0.4rem;
+padding-left: 0.4rem;
+vertical-align: top;
+border-top: 1px solid #dee2e6;
+}
+
+#jumbo-row{
+margin-left: 0px;
+margin-right: 0px;
+}
+
+#drop_product{
+  display: block;
+  text-align: center;
+  padding: 20%;
+  padding-top: 2%;
+  padding-bottom: 22px;
+}
+#data_description{
+background-color:#945dcc;
+position: inherit;
+bottom: -27%;
+text-align: center;
+margin-bottom: -5px;
+padding: 39px;
+    
+}
+
+
+.dropdown{
+    display: inline;
+}

@@ -1,0 +1,101 @@
+{% extends './base.html' %}
+{% block content %}
+<!-- {% load static %} -->
+{% include './messages.html' %}
+
+<!-- INCLUDE COMMON HEADER  -->
+{% include '../common/header.html'%}
+
+    {% if database_access %}
+    <div class="row" id="jumbo-row">
+    {% for db in database_access %}
+        <div class="col-md-4" style="margin-bottom: 20px">
+
+            <div class="jumbotron mt-3 h-100 d-flex flex-column align-items-start" style="padding: 0.6em 1.6em;background-color: #945dcc;">
+                           <h3 class='fas_head'>{{db.values.0}}</h3>
+                           <a href = "{% url 'polls:show_db' db_name=db.keys.0 %}" class="fas"><i class='fas fa-database' style='font-size:48px;color:white'></i></a>
+                           <h5 class="fas_head"><a href = "{% url 'polls:show_db' db_name=db.keys.0 %}"><b>{{db.keys.0}}</b></a></h5></a>
+                       </div>
+        </div>
+
+    {% endfor %}
+    </div>   
+    {% endif %}
+
+    {% if tables %}
+
+<div class="row">
+    <div class="col-sm-4">
+<div class="sidenav">
+  <div id="db_tables">
+  <span><b style="color: #945dcc;display: block;text-align: center;width: 80%;">Tables</b></span>
+</div>
+
+{% for table in tables %}
+
+<a href = "{% url 'polls:show_table' db_name=database db_table=table %}" ><i id="table_icon" class="fa fa-table" aria-hidden="true"></i>{{table}}</a>    
+  {% endfor %}
+</div>
+</div>    
+    <div class="col-sm-8">
+      <p id="db_header"><b style="color: #945dcc;">DataBase[{{database}}]</b></p>
+      <div class="container">
+  <h2 style="color: #945dcc;" >table[{{table_name}}]</h2>
+  <p>Analyse the below table data the details</p>    
+  {% if table_data is not None %} 
+  <table class="table table-condensed table-hover">
+    <thead>
+        <tr>
+        {% for item in table_data %}
+            {% if forloop.first %}
+                {% for header in item %}
+                    <th>{{ header }}</th>
+                {% endfor %}
+            {% endif%}
+        {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in table_data %}
+            <tr>
+                {% for key,value in item.items %}
+                    <td>{{ value}}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </tbody>    
+    </table>
+  {% else %}
+<h3 id="table_msg" class='text-muted'> NO DATA FOUND FOR {{table_name}}</h3>
+  {% endif %}
+</div>
+    </div>
+</div>
+{% endif %}
+
+<div class="modal hide " id="signupModel" tabindex="-1" role="dialog" aria-labelledby="signupModelLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document" >
+    <div id="signup-content" class="modal-content">
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal HTML -->
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="signupModelLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-confirm">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p class="text-center"><b style="color:black">Are You Sure To Logout</b></p>
+      </div>
+      <div class="modal-footer">
+        <a href="{% url 'polls:logout_user' %}" class="btn btn-block" style="background-color:#945dcc"><span>Logout sure</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include '../common/footer.html'%}
+
+<!-- <li><a href="polls/signup.html" class='li-modal'>Lab 6666666666666666666</a></li> -->
+<!-- Footer -->
+{% endblock %}
