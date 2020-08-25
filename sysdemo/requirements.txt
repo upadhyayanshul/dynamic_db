@@ -1,6 +1,16 @@
 certifi==2020.6.20
 chardet==3.0.4
-Django==1.10.8
+collection==0.1.6
+Django==1.11.29
+django-bootstrap-modal-forms==1.4.0
+django-cors-headers==3.0.2
+django-crispy-forms==1.7.1
+django-login-required-middleware==0.5.0
+django-toggle-switch-widget==0.1.0
+djangorestframework==3.9.4
 idna==2.6
+psycopg2==2.8.5
+PyMySQL==0.10.0
+pytz==2020.1
 requests==2.18.4
 urllib3==1.22
